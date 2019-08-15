@@ -1,0 +1,11 @@
+version: "3.7"
+services:
+  consul:
+    image: calv1npdx/torrent-server:latest
+    restart: always
+    environment:
+      CONSUL_BIND_INTERFACE: eth0
+    ports:
+      - 8500:8500
+volumes:
+  logs:
