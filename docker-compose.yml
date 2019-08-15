@@ -1,11 +1,44 @@
+#$env:torrentPath = ""
+#$env:delugePath = ""
+#$env:timezonePath = ""
+#$env:piaUsername = ""
+#$env:optionalPiaClient = ""
+
 version: "3.7"
 services:
   consul:
     image: calv1npdx/torrent-server:latest
     restart: always
+    volumes:
+      - ${torrentPath}:/torrents
+      - ${delugePath}:/app/deluge
+      - ${timezonePath}:/etc/localtime:ro
     environment:
-      CONSUL_BIND_INTERFACE: eth0
+      DELUGE_UID: 500 
+      DELUGE_GID: 500
+      HOST_SUBNET: 192.168.1.0/24
+      PIA_USER: ${piaUsername}
+      PIA_PASS: ${piaPassword}
+      PIA_CLIENT: ${optionalPiaClient}
+      PIA_GATEWAY: piavpnaddress.com 
     ports:
-      - 8500:8500
+      8112:8112 
+      1080:1080
 volumes:
   logs:
+
+
+#docker run -d -p 8112:8112 -p 1080:1080 \
+#        --name vpn \
+#        --dns=8.8.8.8 \
+#        --cap-add=NET_ADMIN \    
+#        -v /mytorrentdir:/torrents \
+#        -v /mydelugeconfigdir:/app/deluge \
+#        -v /etc/localtime:/etc/localtime:ro \
+#        -e DELUGE_UID=500 -e DELUGE_GID=500 \
+#        -e HOST_SUBNET=192.168.1.0/24 \
+#        -e PIA_USER=<user> \
+#        -e PIA_PASS=<password> \
+#        -e PIA_CLIENT=<optionalpiaclient> \
+#        -e PIA_GATEWAY=piavpnaddress.com \        
+#        jbogatay/piavpn
