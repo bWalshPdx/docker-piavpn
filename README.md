@@ -1,43 +1,87 @@
-docker-piavpn
-================
+# Dockerized Bittorrent Server
 
-Ubuntu:1404 based Privateinternetaccess.com vpn with torrents/proxy (openvpn, deluged, deluge-web, dante-server)
+This is a portable bittorrent server that can be used anywhere.
 
-Complete run command with all options
+## Getting Started
 
-    docker run -d -p 8112:8112 -p 1080:1080 \
-        --name vpn \
-        --dns=8.8.8.8 \
-        --cap-add=NET_ADMIN \    
-        -v /mytorrentdir:/torrents \
-        -v /mydelugeconfigdir:/app/deluge \
-        -v /etc/localtime:/etc/localtime:ro \
-        -e DELUGE_UID=500 -e DELUGE_GID=500 \
-        -e HOST_SUBNET=192.168.1.0/24 \
-        -e PIA_USER=<user> \
-        -e PIA_PASS=<password> \
-        -e PIA_CLIENT=<optionalpiaclient> \
-        -e PIA_GATEWAY=piavpnaddress.com \        
-        jbogatay/piavpn
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
+### Prerequisites
 
-Change directory mappings as appropriate (delugeconfig, torrents)
+What things you need to install the software and how to install them
 
-notes
-=====
+```
+Give examples
+```
 
-* DELUGE_UID and DELUGE_GID are optional, but will default to 500/500.   Specify the UID/GID that corresponds to the **HOST** UID/GID you want to own the downloads, config and movies directories.
-* The deluge web will only work on your local subnet.   Policy based routing is what led me to this solution, I'm not going down that road again.  If you need access from the outside, either VPN or SSH/Port forward in.
-* You must map a torrents directory, no torrents inside container
-* If you want it to restart on reboot, add --restart=always
-* If you leave the DNS out, your local dns servers will be used.  Not good for privacy.
-* The NET_ADMIN capability is needed to create the TUN device
-* The host subnet needs to be in CIDR notation.   For example if your host network is 192.168.1.x with a netmask of 255.255.255.0, then HOST_SUBNET=192.168.1.0/24
-* The PIA_CLIENT is optional, but if you generate one yourself port mappings will be preserved between cold starts.   Here is one way to generate a PIA_CLIENT.
+### Installing
 
+A step by step series of examples that tell you how to get a development env running
 
-    head -n 100 /dev/urandom | md5sum | tr -d " -"
-    
+Say what the step will be
 
-* PIA_GATEWAY is just a pia vpn hostname.  (ca.privateinternetaccess.com, nl.privateinternetaccess.com, etc)
-* After running for the first time, setup deluge so all torrents begin with /torrents
+```
+Give the example
+```
+
+And repeat
+
+```
+until finished
+```
+
+End with an example of getting some data out of the system or using it for a little demo
+
+## Running the tests
+
+Explain how to run the automated tests for this system
+
+### Break down into end to end tests
+
+Explain what these tests test and why
+
+```
+Give an example
+```
+
+### And coding style tests
+
+Explain what these tests test and why
+
+```
+Give an example
+```
+
+## Deployment
+
+Add additional notes about how to deploy this on a live system
+
+## Built With
+
+* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
+* [Maven](https://maven.apache.org/) - Dependency Management
+* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+
+## Contributing
+
+Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+
+## Versioning
+
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+
+## Authors
+
+* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+
+See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
+## Acknowledgments
+
+* Hat tip to anyone whose code was used
+* Inspiration
+* etc
