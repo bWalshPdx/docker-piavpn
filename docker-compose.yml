@@ -7,7 +7,7 @@
 
 version: "3.7"
 services:
-  consul:
+  torrent-server:
     image: calv1npdx/torrent-server:latest
     restart: always
     volumes:
@@ -23,8 +23,8 @@ services:
       PIA_CLIENT: ${optionalPiaClient}
       PIA_GATEWAY: piavpnaddress.com 
     ports:
-      8112:8112 
-      1080:1080
+      - 8112:8112 
+      - 1080:1080
 volumes:
   logs:
 
