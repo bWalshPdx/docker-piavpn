@@ -1,8 +1,9 @@
-﻿$env:torrentPath = "D:\Torrents\Downloads"
+﻿#$env:piaPassword = ""
+
+$env:torrentPath = "D:\Torrents\Downloads"
 $env:delugePath = "D:\Torrents\DelugeConfigs"
 $env:timezonePath = ""
-$env:piaUsername = ""
-#$env:piaPassword = ""
+$env:piaUsername = "p9350801"
 $env:optionalPiaClient = ""
 
 docker stack deploy --compose-file docker-compose.yml torrentServer
