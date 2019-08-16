@@ -1,5 +1,5 @@
-﻿$env:torrentPath = ""
-$env:delugePath = ""
+﻿$env:torrentPath = "D:\Torrents\Downloads"
+$env:delugePath = "D:\Torrents\DelugeConfigs"
 $env:timezonePath = ""
 $env:piaUsername = ""
 #$env:piaPassword = ""
