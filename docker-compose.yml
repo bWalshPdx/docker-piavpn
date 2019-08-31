@@ -7,20 +7,22 @@
 
 version: "3.7"
 services:
-  torrent-server:
+  torrent:
+    cap_add:
+      - NET_ADMIN
     image: calv1npdx/torrent-server:latest
     restart: always
     volumes:
       - ${torrentPath}:/torrents
       - ${delugePath}:/app/deluge
-      - ${timezonePath}:/etc/localtime:ro
+    dns: 8.8.8.8
     environment:
       DELUGE_UID: 500 
       DELUGE_GID: 500
       HOST_SUBNET: 192.168.1.0/24
       PIA_USER: ${piaUsername}
       PIA_PASS: ${piaPassword}
-      PIA_CLIENT: ${optionalPiaClient}
+      #PIA_CLIENT: ${optionalPiaClient}
       PIA_GATEWAY: piavpnaddress.com 
     ports:
       - 8112:8112 

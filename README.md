@@ -16,10 +16,7 @@ Give examples
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
-
+docker stack deploy --compose-file docker-compose.yml torrentServer
 ```
 Give the example
 ```
