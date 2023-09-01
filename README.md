@@ -15,17 +15,21 @@ Give examples
 ```
 
 ### Installing
-
-docker stack deploy --compose-file docker-compose.yml torrentServer
-```
-Give the example
-```
-
-And repeat
+For a windows machine:
 
 ```
-until finished
+.\laptopStack.ps1
 ```
+
+And on a linux server:
+
+```
+<NOT_IMPLEMENTED_YET>
+```
+
+## Verifying vpn:
+
+curl ipinfo.io
 
 End with an example of getting some data out of the system or using it for a little demo
 
