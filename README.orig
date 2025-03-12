@@ -5,7 +5,8 @@ Ubuntu:1404 based Privateinternetaccess.com vpn with torrents/proxy (openvpn, de
 
 Complete run command with all options
 
-    docker run -d -p 8112:8112 -p 1080:1080 \
+    docker run -d 
+        -p 8112:8112 -p 1080:1080 \
         --name vpn \
         --dns=8.8.8.8 \
         --cap-add=NET_ADMIN \    
